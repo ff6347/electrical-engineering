@@ -22,7 +22,7 @@ void setup(){
   // we have two resistors in our sketch in parallel
   // that means the resistance is devided
   // R = 1/ (1/R1 + 1/R2)
-  double R =  1/(1/R1 + 1/R2); // whole resistor value
+  double R = 100;//1/(1/R1 + 1/R2); // whole resistor value
 
   double I = U/R;
   Serial.print("The voltage is: ");
@@ -35,7 +35,7 @@ void setup(){
   Serial.print(I,5);
   Serial.println(" A");
 
-  Serial.println(" Now remove one of the resistors and set the R to 1000. Then upload the sketch again.");
+  Serial.println(" Now remove one of the resistors and set the R to 100. Then upload the sketch again.");
 }
 void loop(){
 
