@@ -1,0 +1,155 @@
+# Logic Gates
+
+This is example code to simulate logic gates in Arduino.  
+Each of these snippets need to be embedded into this skeleton;
+
+```c
+int pinA = 12;
+int pinB = 11;
+int pinOUT = 10;
+int INPUTA = LOW;
+int INPUTB = LOW;
+int OUTPUT = LOW;
+void setup(){
+    pinMode(pinA, INPUT);
+    pinMode(pinB, INPUT);
+    pinMode(pinOUT, OUTPUT);
+}
+void loop(){
+    INPUTA = digitalRead(pinA);
+    INPUTB = digitalRead(pinB);
+// add the snippet here ---------
+
+// end of snippet  --------------
+    digitalWrite(pinOUT, OUTPUT);
+}
+```
+
+
+## AND
+
+AND = only if both INPUTS are HIGH the OUTPUT is HIGH
+
+| A   | B   | AB  |
+| :-- | :-- | :-- |
+| 0   | 0   | 0   |
+| 0   | 1   | 0   |
+| 1   | 0   | 0   |
+| 1   | 1   | 1   |
+
+```c
+if(INPUTA == HIGH && INPUTB == HIGH){
+    OUTPUT = HIGH;
+} else {
+    OUTPUT = LOW;
+}
+```
+
+## OR
+
+OR = if one of the INPUTS is HIGH the OUTPUT is HIGH
+
+| A   | B   | A+B |
+| :-- | :-- | :-- |
+| 0   | 0   | 0   |
+| 0   | 1   | 1   |
+| 1   | 0   | 1   |
+| 1   | 1   | 1   |
+
+```c
+if(INPUTA == HIGH || INPUTB == HIGH){
+    OUTPUT = HIGH;
+} else{
+    OUTPUT = LOW;
+}
+```
+
+## NOT
+
+NOT = if the INPUT is LOW the OUTPUT is HIGH and vise versa
+
+| A   | A'  |
+| :-- | :-- |
+| 1   | 0   |
+| 0   | 1   |
+
+```c
+OUTPUT = !INPUTA;
+```
+
+## NAND (NOT-AND)  
+
+NAND = if both INPUTS are HIGH the OUTPUT is LOW. In all other cases the OUTPUT is HIGH
+
+| A   | B   | A'B' |
+| :-- | :-- | :--  |
+| 0   | 0   | 1    |
+| 0   | 1   | 1    |
+| 1   | 0   | 1    |
+| 1   | 1   | 0    |
+
+```c
+if(INPUTA == HIGH && INPUTB == HIGH){
+    OUTPUT = LOW;
+} else {
+   OUTPUT = HIGH; 
+}
+```
+
+## NOR (NOT-OR)
+
+NOR = if any INPUT is HIGH the OUTPUT is LOW
+
+| A   | B   | A'+B' |
+| :-- | :-- | :--   |
+| 0   | 0   | 1     |
+| 0   | 1   | 0     |
+| 1   | 0   | 0     |
+| 1   | 1   | 0     |
+
+```c
+if(INPUTA == LOW && INPUTB == LOW){
+    OUTPUT = HIGH;
+} else {
+    OUTPUT = LOW;
+}
+```
+
+## XOR or EXOR (Exclusive OR)
+
+XOR = only one of the INPUTS can be HIGH to make the OUTPUT HIGH if both are 
+HIGH the OUTPUT is low. If none is HIGH output is also LOW
+
+| A   | B   | A⨁B |
+| :-- | :-- | :-- |
+| 0   | 0   | 0   |
+| 0   | 1   | 1   |
+| 1   | 0   | 1   |
+| 1   | 1   | 0   |
+
+```c
+if((INPUTA == LOW && INPUTB == LOW) ||(INPUTA == HIGH && INPUTB == HIGH)){
+    OUTPUT = LOW;
+} else {
+    OUTPUT = HIGH;
+}
+```
+
+## XNOR or EXNOR (Exclusive NOR)
+
+XNOR = if both INPUTS are HIGH or LOW the OUTPUT is HIGH. If one is diferent then the other the OUTPUT is LOW
+
+| A   | B   | A'⨁B' |
+| :-- | :-- | :--   |
+| 0   | 0   | 1     |
+| 0   | 1   | 0     |
+| 1   | 0   | 0     |
+| 1   | 1   | 1     |
+
+```c
+if((INPUTA == LOW && INPUTB == LOW )|| (INPUTA == HIGH && INPUTB == HIGH)){
+    OUTPUT = HIGH;
+} else {
+    OUTPUT = LOW;
+}
+```
